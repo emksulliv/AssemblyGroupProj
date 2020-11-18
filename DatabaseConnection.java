@@ -9,6 +9,7 @@ public class DatabaseConnection {
     static boolean query(String sql) throws Exception {
         //using Microsoft JDBC DRIVER 8.4 for SQL Server
         //default port 1433 & Integrated Security configured
+        //Test
         String connectionUrl = "jdbc:sqlserver://localhost;databaseName=UMBC Classes;integratedSecurity=true;";
 
         ResultSet result = null;
