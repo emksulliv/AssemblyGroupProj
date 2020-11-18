@@ -41,7 +41,7 @@ class QuickStart {
             case "1":
                 System.out.println("You selected 1");
                 // TODO: Sam
-                // TODO: listing out sql file (all classes)
+                // TODO: listing out sql file (all classes) looking at tutorial
                 break;
             case "2":
                 System.out.println("You selected 2");
