@@ -4,12 +4,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/*
+*   TODO Add Description and Class Size Columns
+*/
+
 public class DatabaseConnection {
 
     static boolean query(String sql) throws Exception {
         //using Microsoft JDBC DRIVER 8.4 for SQL Server
         //default port 1433 & Integrated Security configured
-        //Test
         String connectionUrl = "jdbc:sqlserver://localhost;databaseName=UMBC Classes;integratedSecurity=true;";
 
         ResultSet result = null;
@@ -38,6 +41,10 @@ public class DatabaseConnection {
             return false;
         }
     }
+    //Sample Records in Database:
+    //CMSC313 2345 Online 1
+    //CMSC304 3675 Online 2
+    // ...
     public static void main(String[] args) throws Exception {
         /*//using Microsoft JDBC DRIVER 8.4 for SQL Server
         //default port 1433 & Integrated Security configured
