@@ -54,6 +54,9 @@ class QuickStart {
                 // assigning point values to keywords
                 // and filling in schedule of what is online and
                 // what is in person
+                // TODO making priotity points
+                // TODO editing the database to fill in "online/inperson colun"
+                // TODO printing that
                 break;
             case "4":
                 System.out.println("You selected 4");
