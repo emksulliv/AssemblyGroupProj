@@ -4,10 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/*
-*   TODO Add Description and Class Size Columns
-*/
-
 public class DatabaseConnection {
 
     static boolean query(String sql) throws Exception {
