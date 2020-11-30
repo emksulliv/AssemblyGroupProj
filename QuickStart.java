@@ -10,6 +10,7 @@
  */
 
 import java.util.Scanner;
+import java.io.*;
 
 class QuickStart {
     public static void main(String[] args) {
@@ -34,37 +35,60 @@ class QuickStart {
         System.out.println("3. Plan semester's classes");
         System.out.println("4. exit\n\n");
 
+        
         String menu_selection;
         System.out.println("Enter an option to continue: ");
         menu_selection = user_input.next();
-        switch (menu_selection) {
-            case "1":
-                System.out.println("You selected 1");
-                // TODO: Sam
-                // TODO: listing out sql file (all classes) looking at tutorial
-                break;
-            case "2":
-                System.out.println("You selected 2");
-                // TODO: Emily
-                // PUsh class to sql file
-                break;
-            case "3":
-                System.out.println("You selected 3");
-                // TODO Full logic of
-                // assigning point values to keywords
-                // and filling in schedule of what is online and
-                // what is in person
-                // TODO making priotity points
-                // TODO editing the database to fill in "online/inperson colun"
-                // TODO printing that
-                break;
-            case "4":
-                System.out.println("You selected 4");
-                break;
-            default:
-                System.out.println("Invalid Menu Input");
-                break;
+        while(!(menu_selection.equals("4"))){
+            switch (menu_selection) {
+                case "1":
+                    System.out.println("You selected 1");
+                    // TODO: Sam
+                    // TODO: listing out sql file (all classes) looking at tutorial
+                    try{
+                        String line;
+                        Process p = Runtime.getRuntime().exec("");//Whatever the sql file name is I believe goes in the parentheses
+                        BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                        while((line = input.readLine()) != null){
+                            System.out.println(line);
+                        }
+                        input.close();
+                    }
+                    catch (Exception err){
+                        err.printStackTrace();
+                    }
+                    break;
+                case "2":
+                    System.out.println("You selected 2");
+                    // TODO: Emily
+                    // PUsh class to sql file
+                    break;
+                case "3":
+                    System.out.println("You selected 3");
+                    // TODO Full logic of
+                    // assigning point values to keywords
+                    // and filling in schedule of what is online and
+                    // what is in person
+                    // TODO making priotity points
+                    // TODO editing the database to fill in "online/inperson colun"
+                    // TODO printing that
+                    break;
+                case "4":
+                    System.out.println("You selected 4");
+                    break;
+                default:
+                    System.out.println("Invalid Menu Input");
+                    break;
 
+            }
+        System.out.println("\033[4mPlease Pick an Option: \033[0m");
+        System.out.println("1. List all classes available");
+        System.out.println("2. Add a class to the database");
+        System.out.println("3. Plan semester's classes");
+        System.out.println("4. exit\n\n");
+
+        System.out.println("Enter an option to continue: ");
+        menu_selection = user_input.next();
         }
     }
 }
