@@ -45,17 +45,11 @@ class QuickStart {
                     System.out.println("You selected 1");
                     // TODO: Sam
                     // TODO: listing out sql file (all classes) looking at tutorial
-                    try{
-                        String line;
-                        Process p = Runtime.getRuntime().exec("");//Whatever the sql file name is I believe goes in the parentheses
-                        BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                        while((line = input.readLine()) != null){
-                            System.out.println(line);
-                        }
-                        input.close();
+                    try {
+                        DatabaseConnection.query("SELECT * FROM Classes");
                     }
-                    catch (Exception err){
-                        err.printStackTrace();
+                    catch(Exception e){
+                        e.printStackTrace();
                     }
                     break;
                 case "2":
