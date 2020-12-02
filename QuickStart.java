@@ -56,6 +56,35 @@ class QuickStart {
                     System.out.println("You selected 2");
                     // TODO: Emily
                     // PUsh class to sql file
+                    String input;
+                    String sqlStr = "INSERT INTO Classes VALUES(";
+                    System.out.println("Class Code: ");
+                    input = user_input.next();
+                    sqlStr += "'" + input + "',";
+                    System.out.println("Section: ");
+                    input = user_input.next();
+                    sqlStr += "'" + input + "',";
+                    System.out.println("Online, Hybrid, or In-Person: ");
+                    input = user_input.next();
+                    sqlStr += "'" + input + "',";
+                    System.out.println("Priority: ");
+                    input = user_input.next();
+                    sqlStr += "'" + input + "',";
+                    System.out.println("Description: ");
+                    user_input.nextLine();
+                    input = user_input.nextLine();
+                    sqlStr += "'" + input + "',";
+                    System.out.println("Class Size: ");
+                    input = user_input.next();
+                    sqlStr += "'" + input + "')";
+
+                    try {
+                        DatabaseConnection.query(sqlStr);
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+
                     break;
                 case "3":
                     System.out.println("You selected 3");
@@ -84,5 +113,7 @@ class QuickStart {
         System.out.println("Enter an option to continue: ");
         menu_selection = user_input.next();
         }
+        System.out.println("Exiting Program");
+        user_input.close();
     }
 }
