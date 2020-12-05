@@ -10,6 +10,7 @@
  */
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.io.*;
 
 class QuickStart {
@@ -46,7 +47,7 @@ class QuickStart {
                     // TODO: Sam
                     // TODO: listing out sql file (all classes) looking at tutorial
                     try {
-                        DatabaseConnection.query("SELECT * FROM Classes");
+                        DatabaseConnection.query("SELECT * FROM ClassSchedule");
                     }
                     catch(Exception e){
                         e.printStackTrace();
@@ -57,17 +58,8 @@ class QuickStart {
                     // TODO: Emily
                     // PUsh class to sql file
                     String input;
-                    String sqlStr = "INSERT INTO Classes VALUES(";
+                    String sqlStr = "INSERT INTO ClassSchedule VALUES(";
                     System.out.println("Class Code: ");
-                    input = user_input.next();
-                    sqlStr += "'" + input + "',";
-                    System.out.println("Section: ");
-                    input = user_input.next();
-                    sqlStr += "'" + input + "',";
-                    System.out.println("Online, Hybrid, or In-Person: ");
-                    input = user_input.next();
-                    sqlStr += "'" + input + "',";
-                    System.out.println("Priority: ");
                     input = user_input.next();
                     sqlStr += "'" + input + "',";
                     System.out.println("Description: ");
@@ -76,7 +68,7 @@ class QuickStart {
                     sqlStr += "'" + input + "',";
                     System.out.println("Class Size: ");
                     input = user_input.next();
-                    sqlStr += "'" + input + "')";
+                    sqlStr += "'" + input + "','5','TBD')";
 
                     try {
                         DatabaseConnection.query(sqlStr);
@@ -92,9 +84,33 @@ class QuickStart {
                     // assigning point values to keywords
                     // and filling in schedule of what is online and
                     // what is in person
-                    // TODO making priotity points
                     // TODO editing the database to fill in "online/inperson colun"
                     // TODO printing that
+                    ArrayList<Course> classes = null; 
+                    try {
+                        classes = DatabaseConnection.editQuery("SELECT * FROM ClassSchedule");
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+
+                    for(int i=0;i<classes.size();i++){
+                        int priority = 0;
+                        String type = "";
+                        //
+                        // TODO making priotity points
+                        //
+                        classes.get(i).setPriority(priority);
+                        String str = "UPDATE ClassSchedule SET Priority = '" + Integer.toString(priority) +
+                                        "', Type = '"+ type +
+                                        "' WHERE ClassCode = '"+ classes.get(i).getClassCode() +"')";
+                        try {
+                            DatabaseConnection.query(str);
+                        }
+                        catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }
                     break;
                 case "4":
                     System.out.println("You selected 4");
