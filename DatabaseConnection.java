@@ -20,8 +20,9 @@ public class DatabaseConnection {
              if(sql.contains("SELECT")){
                 result = statement.executeQuery(sql);
                 while (result.next()) {
-                    System.out.println(result.getString(1)+" "+result.getString(2)+" "+result.getString(3)+" "+
-                    result.getString(4)+" "+result.getString(5));
+                    System.out.println("\033[1mClass Code: \033[0m" + result.getString(1)+"\n"+
+                                       "\033[1mClass Description: \033[0m" + result.getString(2)+"\n"+
+                                       "\033[1mClass Size: \033[0m" + result.getString(3)+"\n");
                 }
             }
             else{

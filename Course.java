@@ -46,4 +46,13 @@ public class Course {
     public String getType(){
         return type;
     }
+
+    public String toString(){
+        String str = "\033[1mClass Code: \033[0m" + classCode+"\n"+
+        "\033[1mClass Description: \033[0m" + description+"\n"+
+        "\033[1mClass Size: \033[0m" + classSize +"\n"+
+        "\033[1mPriority: \033[0m" + priority+"\n"+
+        "\033[1mType: \033[0m" + type +"\n";
+        return str;
+    }
 }

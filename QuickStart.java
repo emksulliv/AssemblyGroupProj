@@ -43,9 +43,7 @@ class QuickStart {
         while(!(menu_selection.equals("4"))){
             switch (menu_selection) {
                 case "1":
-                    System.out.println("You selected 1");
-                    // TODO: Sam
-                    // TODO: listing out sql file (all classes) looking at tutorial
+                    System.out.println("You selected 1\n");
                     try {
                         DatabaseConnection.query("SELECT * FROM ClassSchedule");
                     }
@@ -54,9 +52,7 @@ class QuickStart {
                     }
                     break;
                 case "2":
-                    System.out.println("You selected 2");
-                    // TODO: Emily
-                    // PUsh class to sql file
+                    System.out.println("You selected 2\n");
                     String input;
                     String sqlStr = "INSERT INTO ClassSchedule VALUES(";
                     System.out.println("Class Code: ");
@@ -72,19 +68,20 @@ class QuickStart {
 
                     try {
                         DatabaseConnection.query(sqlStr);
+                        System.out.println("Success!");
                     }
                     catch(Exception e){
+                        System.out.println("Failed To Add Class");
                         e.printStackTrace();
                     }
 
                     break;
                 case "3":
-                    System.out.println("You selected 3");
+                    System.out.println("You selected 3\n");
                     // TODO Full logic of
                     // assigning point values to keywords
                     // and filling in schedule of what is online and
                     // what is in person
-                    // TODO editing the database to fill in "online/inperson colun"
                     // TODO printing that
                     ArrayList<Course> classes = null; 
                     try {
@@ -97,15 +94,39 @@ class QuickStart {
                     for(int i=0;i<classes.size();i++){
                         int priority = 0;
                         String type = "";
-                        //
+                        // ****************************
                         // TODO making priotity points
-                        //
+                        //*****************************
+                        if(classes.get(i).getDescription().contains("freshman class") ||
+                            classes.get(i).getDescription().contains("graduate class") ||
+                            (classes.get(i).getClassSize() < 49))
+                            {priority = 5;type = "In-Person";}
+                        else if(classes.get(i).getDescription().contains("sophomore class") ||
+                            classes.get(i).getDescription().contains("science class") ||
+                            classes.get(i).getDescription().contains("lab") ||
+                            ((classes.get(i).getClassSize() > 50)&&(classes.get(i).getClassSize() < 99)))
+                            {priority = 4;type = "Hybrid";}
+                        else if(classes.get(i).getDescription().contains("transfer class") ||
+                            ((classes.get(i).getClassSize() > 100)&&(classes.get(i).getClassSize() < 199)))
+                            {priority = 3;type = "Hybrid";}
+                        else if(classes.get(i).getDescription().contains("junior class") ||
+                            ((classes.get(i).getClassSize() > 200)&&(classes.get(i).getClassSize() < 299)))
+                            {priority = 2;type = "Online";}
+                        else if(classes.get(i).getDescription().contains("senior class") ||
+                            (classes.get(i).getClassSize() > 300))
+                            {priority = 1;type = "Online";}
+                        else
+                            {priority = 1;type = "Online";}
+
                         classes.get(i).setPriority(priority);
-                        String str = "UPDATE ClassSchedule SET Priority = '" + Integer.toString(priority) +
-                                        "', Type = '"+ type +
-                                        "' WHERE ClassCode = '"+ classes.get(i).getClassCode() +"')";
+                        classes.get(i).setType(type);
+
+                        String str = "UPDATE ClassSchedule SET Priority = '" + Integer.toString(classes.get(i).getPriority()) +
+                                        "', Type = '"+ classes.get(i).getType() +
+                                        "' WHERE ClassCode = '"+ classes.get(i).getClassCode() +"'";
                         try {
                             DatabaseConnection.query(str);
+                            System.out.println(classes.get(i).toString());
                         }
                         catch(Exception e){
                             e.printStackTrace();
@@ -113,7 +134,7 @@ class QuickStart {
                     }
                     break;
                 case "4":
-                    System.out.println("You selected 4");
+                    System.out.println("You selected 4\n");
                     break;
                 default:
                     System.out.println("Invalid Menu Input");
