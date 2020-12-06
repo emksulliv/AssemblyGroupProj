@@ -98,22 +98,32 @@ class QuickStart {
                         // TODO making priotity points
                         //*****************************
                         if(classes.get(i).getDescription().contains("freshman class") ||
-                            classes.get(i).getDescription().contains("graduate class") ||
-                            (classes.get(i).getClassSize() < 49))
-                            {priority = 5;type = "In-Person";}
+                            classes.get(i).getDescription().contains("graduate class"))
+                                {priority = 5;type = "In-Person";}
                         else if(classes.get(i).getDescription().contains("sophomore class") ||
                             classes.get(i).getDescription().contains("science class") ||
-                            classes.get(i).getDescription().contains("lab") ||
-                            ((classes.get(i).getClassSize() > 50)&&(classes.get(i).getClassSize() < 99)))
+                            classes.get(i).getDescription().contains("lab"))
+                                {priority = 4;type = "Hybrid";}
+                        else if(classes.get(i).getDescription().contains("transfer class"))
+                                {priority = 3;type = "Hybrid";}
+                        else if(classes.get(i).getDescription().contains("junior class"))
+                                {priority = 2;type = "Online";}
+                        else if(classes.get(i).getDescription().contains("senior class"))
+                                {priority = 1;type = "Online";}
+                        else
+                            {priority = 1;type = "Online";}
+
+                            //****************************************************** */
+
+                        if(classes.get(i).getClassSize() < 49)
+                            {priority = 5;type = "In-Person";}
+                        else if((classes.get(i).getClassSize() > 50)&&(classes.get(i).getClassSize() < 99))
                             {priority = 4;type = "Hybrid";}
-                        else if(classes.get(i).getDescription().contains("transfer class") ||
-                            ((classes.get(i).getClassSize() > 100)&&(classes.get(i).getClassSize() < 199)))
+                        else if((classes.get(i).getClassSize() > 100)&&(classes.get(i).getClassSize() < 199))
                             {priority = 3;type = "Hybrid";}
-                        else if(classes.get(i).getDescription().contains("junior class") ||
-                            ((classes.get(i).getClassSize() > 200)&&(classes.get(i).getClassSize() < 299)))
+                        else if((classes.get(i).getClassSize() > 200)&&(classes.get(i).getClassSize() < 299))
                             {priority = 2;type = "Online";}
-                        else if(classes.get(i).getDescription().contains("senior class") ||
-                            (classes.get(i).getClassSize() > 300))
+                        else if(classes.get(i).getClassSize() > 300)
                             {priority = 1;type = "Online";}
                         else
                             {priority = 1;type = "Online";}
