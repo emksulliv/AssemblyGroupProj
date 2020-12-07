@@ -19,13 +19,6 @@ class QuickStart {
 
         System.out.println("\n\033[1m\033[4m\n\nWelcome To The Semester Class Scheduler!\033[0m\033[0m\n\n");
 
-        // print out the menu to the app. The user will print out a number to select an
-        // option
-        /**
-         * TODO: put this in a while loop where menu options will print every time the
-         * user prints anything other than '4' (to exit).
-         **/
-
         // \033[1m STRING \033[0m = BOLD TEXT
         // \033[4m STRING \033[0m = UNDERLINED TEXT
         // \033[3m STRING \033[0m = ITALIC TEXT
@@ -78,11 +71,6 @@ class QuickStart {
                     break;
                 case "3":
                     System.out.println("You selected 3\n");
-                    // TODO Full logic of
-                    // assigning point values to keywords
-                    // and filling in schedule of what is online and
-                    // what is in person
-                    // TODO printing that
                     ArrayList<Course> classes = null; 
                     try {
                         classes = DatabaseConnection.editQuery("SELECT * FROM ClassSchedule");
@@ -94,9 +82,7 @@ class QuickStart {
                     for(int i=0;i<classes.size();i++){
                         int priority = 0;
                         String type = "";
-                        // ****************************
-                        // TODO making priotity points
-                        //*****************************
+
                         if(classes.get(i).getDescription().contains("freshman class") ||
                             classes.get(i).getDescription().contains("graduate class"))
                                 {priority = 5;type = "In-Person";}
